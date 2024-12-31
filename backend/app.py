@@ -50,7 +50,7 @@ async def assistant_endpoint(req: MessageRequest):
     #     model="gpt-4o",
     # )
     # 우리는 앞서 만든 assistant를 사용합니다.
-    assistant = await openai.beta.assistants.retrieve("asst_tc4AhtsAjNJnRtpJmy1gjJOE")
+    assistant = await openai.beta.assistants.retrieve("asst_ttJIzGo4Rvp7j59xADb5rYAm")
 
     # Create a new thread with the user's message
     thread = await openai.beta.threads.create(
