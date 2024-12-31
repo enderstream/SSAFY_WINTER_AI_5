@@ -8,7 +8,7 @@ import re
 from pinecone import Pinecone, ServerlessSpec
 from langchain_pinecone import PineconeVectorStore
 
-from langchain_chroma import Chroma
+# from langchain_chroma import Chroma
 from langchain_upstage import UpstageEmbeddings
 from langchain.docstore.document import Document
 
@@ -37,9 +37,10 @@ def clean_parsed_text(text):
 
 def loadDocs() :
     # .env 파일 로드
-    dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
-    load_dotenv(dotenv_path)
-
+    # dotenv_path = os.path.join(os.path.dirname(__file__), './env')
+    # print(dotenv_path)
+    # load_dotenv(dotenv_path)
+    load_dotenv()
     #### SET API KEY
 
     # Upstae API KEY
@@ -101,9 +102,17 @@ def getChain() :
             (
                 "system",
                 """
-                You are an assistant for question-answering tasks.
-                Use the following pieces of retrieved context to answer the question considering the history of the conversation.
-                If you don't know the answer, just say that you don't know.
+                You are an AI assistant designed for question-answering tasks.
+                Use the provided context and conversation history to answer the user's question.
+                If you don't know the answer, simply state that you don't have the information.
+
+                If question is about SQLD exam, please complete the following three tasks
+                1. Provide a detailed explanation of the concept addressed in the user's question.
+                2. Generate between three and five multiple-choice questions related to the concept. 
+                    Each question should have four options (A, B, C, D).
+                3. List the correct answers for all multiple-choice questions at the end of your response.
+
+                Remember to use the given context to inform your answers and ensure accuracy in your explanations and questions. If the retriever doesn't provide relevant information, don't attempt to answer the question and instead use the specified response.
                 ---
                 CONTEXT:
                 {context}
@@ -112,6 +121,7 @@ def getChain() :
             ("human", "{input}"),
         ]
     )
+
 
     #### Implementing an LLM Chain
     chain = prompt | llm | StrOutputParser()

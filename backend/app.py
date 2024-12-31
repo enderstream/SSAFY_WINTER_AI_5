@@ -5,6 +5,15 @@ from openai import AsyncOpenAI
 import os
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
+from ragInit import loadDocs, getSplit, getVectorStore, getRetriever, getChain
+# from langchain.chat_models import ChatOpenAI
+
+### 아래 4개는 처음에 한번만 하면 됌
+docs = loadDocs()
+splits = getSplit(docs)
+vectorstore = getVectorStore(splits)
+retriever = getRetriever(vectorstore)
+
 
 load_dotenv()  # Load .env file if present
 
@@ -22,24 +31,23 @@ app.add_middleware(
 )
 
 
+# 사용자 요청 모델
 class MessageRequest(BaseModel):
     message: str
 
-
+# POST 엔드포인트
 @app.post("/chat")
 async def chat_endpoint(req: MessageRequest):
-    # Call the OpenAI ChatCompletion endpoint
-    response = await openai.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": req.message},
-        ],
-        # temperature=0.7,
-    )
-    # Extract assistant message
-    assistant_reply = response.choices[0].message.content
-    return {"reply": assistant_reply}
+    # 사용자 입력을 retriever에 전달
+    query = req.message
+    result_docs = retriever.invoke(query)  # 검색 수행
+    
+    # Chain 호출
+    chain = getChain()
+    response = chain.invoke({"context": result_docs, "input": query})
+
+    # 결과 반환
+    return {"reply": response}
 
 
 @app.post("/assistant")
