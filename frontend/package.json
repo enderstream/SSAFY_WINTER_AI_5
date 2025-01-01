@@ -18,5 +18,8 @@
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17"
   },
-  "homepage": "https://enderstream.github.io/SSAFY_WINTER_AI_5"
+  "homepage": "https://enderstream.github.io/SSAFY_WINTER_AI_5",
+  "optionalDependencies": {
+    "@parcel/watcher-linux-x64-glibc": "latest"
+  }
 }
