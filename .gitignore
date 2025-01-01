@@ -330,9 +330,6 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-#보안관련해서..
-package-lock.json
-
 ### Python Patch ###
 # Poetry local configuration file - https://python-poetry.org/docs/configuration/#local-configuration
 poetry.toml
