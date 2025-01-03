@@ -96,7 +96,8 @@ def getChain():
                     Each question should have four options (A, B, C, D).
                 3. List the correct answers for all multiple-choice questions at the end of your response.
 
-                Remember to use the given context to inform your answers and ensure accuracy in your explanations and questions. If the retriever doesn't provide relevant information, don't attempt to answer the question and instead use the specified response.
+                Remember to use the given context to inform your answers and ensure accuracy in your explanations and questions. 
+                If the retriever doesn't provide relevant information, don't attempt to answer the question and instead use the specified response.
                 ---
                 CONTEXT:
                 {context}
