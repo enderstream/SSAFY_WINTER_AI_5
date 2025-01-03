@@ -29,7 +29,7 @@ RAG(Retrieval-Augmented Generation) 기술을 활용한 학습 보조 챗봇입�
 ### 1. 필수 요구사항
 - Python 3.12 이상
 - Node.js 22 이상
-- AWS 계정 (S3 및 Lambda 사용)
+- AWS 계정 (amplifyapp 사용)
 - Pinecone API 키
 - Open AI API 키
 - Upstage API 키
@@ -39,7 +39,6 @@ RAG(Retrieval-Augmented Generation) 기술을 활용한 학습 보조 챗봇입�
 git clone <repository-url>
 cd backend
 pip install -r requirements.txt
-uvicorn main:app --reload
 
 2. **프론트엔드 설정**
 cd frontend
