@@ -129,3 +129,8 @@ If you are using version-specific calls such as document-parse-250116 or documen
 
 For full details on the changes and improvements, please refer to the update blog post.
 ```
+
+### Document Parse API의 두 가지 버전이 2025년 5월 15일에 완전히 지원 종료됩니다:
+- document-parse-250305
+- document-parse-250116  
+> 단, 최신 버전(document-parse-250404)이 현재 사용 가능하며, 4월 16일부터 별칭 기반 호출(document-parse)은 기본적으로 최신 버전을 가리킵니다.
