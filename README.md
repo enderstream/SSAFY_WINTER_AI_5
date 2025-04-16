@@ -103,3 +103,29 @@ RAG 기반 학습 보조 챗봇은 학습 자료를 기반으로 높은 정확�
 ### 향후 발전 방향
 1. 더 다양한 데이터 형식 지원 (HTML, DOCX 등).
 2. 사용자의 입력(문서)을 받는 기능을 추가해 동적으로 Vertor DB 생성 후 활용
+
+## 추가사항
+Upstage의 document-parse api가 deprecated됐습니다
+```
+
+Hello,
+
+ 
+
+You're receiving this message because you have recently used the following versions of the Document Parse API:
+
+document-parse-250305
+document-parse-250116
+ 
+
+Please be advised that these versions will be fully deprecated on May 15, 2025.
+
+­
+What you need to know
+The latest version, document-parse-250404, is now available.
+Starting April 16, the alias-based call (document-parse) will point to the latest version by default.
+If you are using version-specific calls such as document-parse-250116 or document-parse-250305, you will need to update them to avoid disruption.
+ 
+
+For full details on the changes and improvements, please refer to the update blog post.
+```
